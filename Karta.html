@@ -56,6 +56,21 @@ var imageOverlay = L.imageOverlay(imageUrl, latLngBounds, {
   alt: altText,
 }).addTo(map);
 
+	var kvadrat = L.rectangle(latLngBounds, { weight: 1, fillOpacity: 1 });
+map.fitBounds(latLngBounds);
+
+var shelterMarkers = new L.FeatureGroup();
+
+shelterMarkers.addLayer(kvadrat);
+
+map.on("zoomend", function () {
+  if (map.getZoom() > 11) {
+    map.removeLayer(shelterMarkers);
+  } else {
+    map.addLayer(shelterMarkers);
+  }
+});
+
 </script>
 
 
