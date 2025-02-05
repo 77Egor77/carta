@@ -40,27 +40,36 @@
 		maxZoom: 19,
 		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 	}).addTo(map);
-var imageUrl = "https://i.imghippo.com/files/wbkT6332JcQ.jpg";
-var errorOverlayUrl = "https://i.imghippo.com/files/wbkT6332JcQ.jpg";
-var altText =
-  "Image of Newark, N.J. in 1922. Source: The University of Texas at Austin, UT Libraries Map Collection.";
-var latLngBounds = L.latLngBounds([
+var imageUrl1 = "https://i.imghippo.com/files/wbkT6332JcQ.jpg";
+var latLngBounds1 = L.latLngBounds([
   [55.78135, 37.768473],
   [55.766222, 37.78635],
 ]);
 
-var imageOverlay = L.imageOverlay(imageUrl, latLngBounds, {
+var imageOverlay = L.imageOverlay(imageUrl1, latLngBounds1, {
   opacity: 0.9,
-  errorOverlayUrl: errorOverlayUrl,
-  alt: altText,
 }).addTo(map);
 
-	var kvadrat = L.rectangle(latLngBounds, { weight: 1, fillOpacity: 1 });
-map.fitBounds(latLngBounds);
+var kvadrat1 = L.rectangle(latLngBounds1, { weight: 1, fillOpacity: 1 });
+map.fitBounds(latLngBounds1);
+
+var imageUrl2 = "https://i.imghippo.com/files/LoBo2624o.png";
+var latLngBounds2 = L.latLngBounds([
+  [60.4407, 29.63245],
+  [60.4193, 29.6882],
+]);
+
+var imageOverlay = L.imageOverlay(imageUrl2, latLngBounds2, {
+  opacity: 0.9,
+}).addTo(map);
+
+var kvadrat2 = L.rectangle(latLngBounds2, { weight: 1, fillOpacity: 1 });
+map.fitBounds(latLngBounds2);
 
 var shelterMarkers = new L.FeatureGroup();
 
-shelterMarkers.addLayer(kvadrat);
+shelterMarkers.addLayer(kvadrat1);
+shelterMarkers.addLayer(kvadrat2);
 
 map.on("zoomend", function () {
   if (map.getZoom() > 11) {
