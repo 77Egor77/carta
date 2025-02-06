@@ -88,12 +88,19 @@
 	var imageOverlay = L.imageOverlay(imageUrl3, latLngBounds3, { opacity: 1, }).addTo(map);
 	var kvadrat3 = L.rectangle(latLngBounds3, {color: "#ff7800", weight: 1, fillOpacity: 1,});
 
+
+	var imageUrl4 = "Maps/Karta4.png";
+	var latLngBounds4 = L.latLngBounds([[43.9032, 42.7136], [43.8913, 42.723], ]);
+	var imageOverlay = L.imageOverlay(imageUrl4, latLngBounds4, { opacity: 1, }).addTo(map);
+	var kvadrat4 = L.rectangle(latLngBounds4, {color: "#ff7800", weight: 1, fillOpacity: 1,});
+
 	
 	var shelterMarkers = new L.FeatureGroup();
 
 	shelterMarkers.addLayer(kvadrat1);
 	shelterMarkers.addLayer(kvadrat2);
 	shelterMarkers.addLayer(kvadrat3);
+	shelterMarkers.addLayer(kvadrat4);
 
 	map.on("zoomend", function () {
 	  if (map.getZoom() > 11) {
