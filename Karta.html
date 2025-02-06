@@ -42,8 +42,13 @@
 
     // Добавляем поиск через Geocoder
     L.Control.geocoder({
-        defaultMarkGeocode: false, // Добавляет маркер на найденное место
-    }).addTo(map);
+        defaultMarkGeocode: false, // Отключаем добавление маркера
+    })
+    .on('markgeocode', function(e) {
+        const latlng = e.geocode.center; // Координаты найденного места
+        map.setView(latlng, 12); // Перемещаем карту к найденному месту
+    })
+    .addTo(map);
 
 	var imageUrl0 = "https://media.tenor.com/ZZIk4A2HY4sAAAAj/cockroach-spinning.gif";
 	var latLngBounds0 = L.latLngBounds([ [55.772328, 37.604910], [55.739328, 37.630510], ]);
@@ -57,7 +62,7 @@
 	]);
 
 	var imageOverlay = L.imageOverlay(imageUrl1, latLngBounds1, {
-	  opacity: 0.9,
+	  opacity: 1,
 	}).addTo(map);
 
 	var kvadrat1 = L.rectangle(latLngBounds1, {color: "#ff7800", weight: 1, fillOpacity: 1,});
@@ -69,7 +74,7 @@
 	]);
 
 	var imageOverlay = L.imageOverlay(imageUrl2, latLngBounds2, {
-	  opacity: 0.9,
+	  opacity: 1,
 	}).addTo(map);
 
 	var kvadrat2 = L.rectangle(latLngBounds2, {color: "#ff7800", weight: 1, fillOpacity: 1,});
