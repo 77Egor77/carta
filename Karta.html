@@ -42,7 +42,7 @@
 
     // Добавляем поиск через Geocoder
     L.Control.geocoder({
-        defaultMarkGeocode: false, // Отключаем добавление маркера
+        defaultMarkGeocode: true, // Отключаем добавление маркера
     })
     .on('markgeocode', function(e) {
         const latlng = e.geocode.center; // Координаты найденного места
