@@ -68,37 +68,32 @@
 
 	var imageUrl0 = "https://media.tenor.com/ZZIk4A2HY4sAAAAj/cockroach-spinning.gif";
 	var latLngBounds0 = L.latLngBounds([ [55.772328, 37.604910], [55.739328, 37.630510], ]);
-
 	var imageOverlay = L.imageOverlay(imageUrl0, latLngBounds0, {opacity: 1, }).addTo(map);
+
 	
 	var imageUrl1 = "https://i.imghippo.com/files/wbkT6332JcQ.jpg";
-	var latLngBounds1 = L.latLngBounds([
-	  [55.78135, 37.768473],
-	  [55.766222, 37.78635],
-	]);
-
-	var imageOverlay = L.imageOverlay(imageUrl1, latLngBounds1, {
-	  opacity: 1,
-	}).addTo(map);
-
+	var latLngBounds1 = L.latLngBounds([[55.78135, 37.768473], [55.766222, 37.78635], ]);
+	var imageOverlay = L.imageOverlay(imageUrl1, latLngBounds1, {opacity: 1, }).addTo(map);
 	var kvadrat1 = L.rectangle(latLngBounds1, {color: "#ff7800", weight: 1, fillOpacity: 1,});
 
+	
 	var imageUrl2 = "Maps/Karta2.png";
-	var latLngBounds2 = L.latLngBounds([
-	  [60.4407, 29.63245],
-	  [60.4193, 29.6882],
-	]);
-
-	var imageOverlay = L.imageOverlay(imageUrl2, latLngBounds2, {
-	  opacity: 1,
-	}).addTo(map);
-
+	var latLngBounds2 = L.latLngBounds([[60.4407, 29.63245], [60.4193, 29.6882], ]);
+	var imageOverlay = L.imageOverlay(imageUrl2, latLngBounds2, { opacity: 1, }).addTo(map);
 	var kvadrat2 = L.rectangle(latLngBounds2, {color: "#ff7800", weight: 1, fillOpacity: 1,});
 
+
+	var imageUrl3 = "Maps/Karta3.png";
+	var latLngBounds3 = L.latLngBounds([[43.8999, 42.7305], [43.8929, 42.7441], ]);
+	var imageOverlay = L.imageOverlay(imageUrl3, latLngBounds3, { opacity: 1, }).addTo(map);
+	var kvadrat3 = L.rectangle(latLngBounds3, {color: "#ff7800", weight: 1, fillOpacity: 1,});
+
+	
 	var shelterMarkers = new L.FeatureGroup();
 
 	shelterMarkers.addLayer(kvadrat1);
 	shelterMarkers.addLayer(kvadrat2);
+	shelterMarkers.addLayer(kvadrat3);
 
 	map.on("zoomend", function () {
 	  if (map.getZoom() > 11) {
