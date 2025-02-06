@@ -35,7 +35,7 @@
 <div id="map" style="width: auto; height: 100vh;"></div>
 <script>
 
-	const map = L.map('map').setView([55.4502, 37.3703], 10);
+	const map = L.map('map').setView([55.755828, 37.617710], 10);
 
 	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		maxZoom: 19,
@@ -43,7 +43,7 @@
 	}).addTo(map);
 
 var imageUrl0 = "https://media.tenor.com/ZZIk4A2HY4sAAAAj/cockroach-spinning.gif";
-var latLngBounds0 = L.latLngBounds([ [55.3222, 37.5353], [55.5782, 37.2053], ]);
+var latLngBounds0 = L.latLngBounds([ [55.772328, 37.604910], [55.739328, 37.630510], ]);
 
 var imageOverlay = L.imageOverlay(imageUrl0, latLngBounds0, {opacity: 1, }).addTo(map);
 	
