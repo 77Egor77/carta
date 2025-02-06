@@ -40,13 +40,29 @@
 		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 	}).addTo(map);
 
+    // Переменная для хранения текущего маркера
+    let currentMarker = null;
+
     // Добавляем поиск через Geocoder
     L.Control.geocoder({
-        defaultMarkGeocode: true, // Отключаем добавление маркера
+        defaultMarkGeocode: false, // Отключаем добавление стандартного маркера
     })
     .on('markgeocode', function(e) {
-        const latlng = e.geocode.center; // Координаты найденного места
-        map.setView(latlng, 12); // Перемещаем карту к найденному месту
+        // Удаляем предыдущий маркер, если он существует
+        if (currentMarker) {
+            map.removeLayer(currentMarker);
+        }
+
+        // Получаем координаты найденного места
+        const latlng = e.geocode.center;
+
+        // Добавляем маркер с прозрачностью
+        currentMarker = L.marker(latlng, {
+            opacity: 0.5, // Устанавливаем прозрачность маркера
+        }).addTo(map);
+
+        // Перемещаем карту к найденному месту
+        map.setView(latlng, 15);
     })
     .addTo(map);
 
