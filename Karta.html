@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +12,9 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
 	<style>
 		html, body {
 			height: 100%;
@@ -25,12 +27,8 @@
 			max-height: 100%;
 		}
 	</style>
-
-	
 </head>
 <body>
-
-
 
 <div id="map" style="width: auto; height: 100vh;"></div>
 <script>
@@ -42,51 +40,54 @@
 		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 	}).addTo(map);
 
-var imageUrl0 = "https://media.tenor.com/ZZIk4A2HY4sAAAAj/cockroach-spinning.gif";
-var latLngBounds0 = L.latLngBounds([ [55.772328, 37.604910], [55.739328, 37.630510], ]);
+    // Добавляем поиск через Geocoder
+    L.Control.geocoder({
+        defaultMarkGeocode: true, // Добавляет маркер на найденное место
+    }).addTo(map);
 
-var imageOverlay = L.imageOverlay(imageUrl0, latLngBounds0, {opacity: 1, }).addTo(map);
+	var imageUrl0 = "https://media.tenor.com/ZZIk4A2HY4sAAAAj/cockroach-spinning.gif";
+	var latLngBounds0 = L.latLngBounds([ [55.772328, 37.604910], [55.739328, 37.630510], ]);
+
+	var imageOverlay = L.imageOverlay(imageUrl0, latLngBounds0, {opacity: 1, }).addTo(map);
 	
-var imageUrl1 = "https://i.imghippo.com/files/wbkT6332JcQ.jpg";
-var latLngBounds1 = L.latLngBounds([
-  [55.78135, 37.768473],
-  [55.766222, 37.78635],
-]);
+	var imageUrl1 = "https://i.imghippo.com/files/wbkT6332JcQ.jpg";
+	var latLngBounds1 = L.latLngBounds([
+	  [55.78135, 37.768473],
+	  [55.766222, 37.78635],
+	]);
 
-var imageOverlay = L.imageOverlay(imageUrl1, latLngBounds1, {
-  opacity: 0.9,
-}).addTo(map);
+	var imageOverlay = L.imageOverlay(imageUrl1, latLngBounds1, {
+	  opacity: 0.9,
+	}).addTo(map);
 
-var kvadrat1 = L.rectangle(latLngBounds1, {color: "#ff7800", weight: 1, fillOpacity: 1,});
+	var kvadrat1 = L.rectangle(latLngBounds1, {color: "#ff7800", weight: 1, fillOpacity: 1,});
 
-var imageUrl2 = "Maps/Karta2.png";
-var latLngBounds2 = L.latLngBounds([
-  [60.4407, 29.63245],
-  [60.4193, 29.6882],
-]);
+	var imageUrl2 = "Maps/Karta2.png";
+	var latLngBounds2 = L.latLngBounds([
+	  [60.4407, 29.63245],
+	  [60.4193, 29.6882],
+	]);
 
-var imageOverlay = L.imageOverlay(imageUrl2, latLngBounds2, {
-  opacity: 0.9,
-}).addTo(map);
+	var imageOverlay = L.imageOverlay(imageUrl2, latLngBounds2, {
+	  opacity: 0.9,
+	}).addTo(map);
 
-var kvadrat2 = L.rectangle(latLngBounds2, {color: "#ff7800", weight: 1, fillOpacity: 1,});
+	var kvadrat2 = L.rectangle(latLngBounds2, {color: "#ff7800", weight: 1, fillOpacity: 1,});
 
-var shelterMarkers = new L.FeatureGroup();
+	var shelterMarkers = new L.FeatureGroup();
 
-shelterMarkers.addLayer(kvadrat1);
-shelterMarkers.addLayer(kvadrat2);
+	shelterMarkers.addLayer(kvadrat1);
+	shelterMarkers.addLayer(kvadrat2);
 
-map.on("zoomend", function () {
-  if (map.getZoom() > 11) {
-    map.removeLayer(shelterMarkers);
-  } else {
-    map.addLayer(shelterMarkers);
-  }
-});
+	map.on("zoomend", function () {
+	  if (map.getZoom() > 11) {
+	    map.removeLayer(shelterMarkers);
+	  } else {
+	    map.addLayer(shelterMarkers);
+	  }
+	});
 
 </script>
-
-
 
 </body>
 </html>
