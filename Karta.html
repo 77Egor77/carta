@@ -100,6 +100,12 @@
 	var imageOverlay = L.imageOverlay(imageUrl5, latLngBounds5, { opacity: 1, }).addTo(map);
 	var kvadrat5 = L.rectangle(latLngBounds5, {color: "#ff7800", weight: 1, fillOpacity: 1,});
 
+
+	var imageUrl6 = "Maps/Karta6.png";
+	var latLngBounds6 = L.latLngBounds([[43.4302, 39.95843], [43.4191, 39.9761], ]);
+	var imageOverlay = L.imageOverlay(imageUrl6, latLngBounds6, { opacity: 1, }).addTo(map);
+	var kvadrat6 = L.rectangle(latLngBounds6, {color: "#ff7800", weight: 1, fillOpacity: 1,});
+
 	
 	var shelterMarkers = new L.FeatureGroup();
 
@@ -108,6 +114,7 @@
 	shelterMarkers.addLayer(kvadrat3);
 	shelterMarkers.addLayer(kvadrat4);
 	shelterMarkers.addLayer(kvadrat5);
+	shelterMarkers.addLayer(kvadrat6);
 
 	map.on("zoomend", function () {
 	  if (map.getZoom() > 11) {
